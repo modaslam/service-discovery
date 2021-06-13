@@ -1,17 +1,33 @@
 server:
    port: 50000
-              
+spring:
+   application:
+      name: service-registry
 ---
 
 spring:
    profiles:
       active: dev
-                       
+eureka:
+   client:
+      eureka-server-connect-timeout-seconds: 5
+      enabled: true
+      registerWithEureka: false
+      fetchRegistry: false
+      serviceUrl:
+         defaultZone: http://localhost:${server.port}/eureka                       
 ---
 
 spring:
    profiles: uat
-             
+eureka:
+  client:
+    eureka-server-connect-timeout-seconds: 5
+    enabled: true
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://ip-address1:${server.port}/eureka/,http://ip-address2:${server.port}/eureka/             
 ---
 
 spring:

@@ -1,12 +1,23 @@
 server:
    port: 50002
-              
+   servlet:
+      context-path: /simple-service
+spring:
+   application:
+      name: simple-service
+eureka:
+   instance:
+      preferIpAddress: true
+                    
 ---
 
 spring:
    profiles:
       active: dev
-                       
+eureka:
+   client:
+      serviceUrl:
+         defaultZone: http://localhost:50000/eureka                          
 ---
 
 spring:
